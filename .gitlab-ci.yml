@@ -5,7 +5,7 @@ pages:
       - node_modules/
   script:
     # - apk add git # Uncomment this if you're using small docker images like alpine and have lastUpdated enabled
-    - npm install
+    - npm install -D vitepress
     - npm run docs:build
   artifacts:
     paths:
