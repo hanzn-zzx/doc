@@ -20,7 +20,7 @@ export default defineConfig({
         { text: '一篇水文', link:'/home' }
       ],
       '/wiki/': [
-        { text: '介绍', link: '/introduction'}
+        { text: '介绍', link: 'wiki/introduction' }
       ]
     },  
 
