@@ -4,7 +4,8 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Linux wiki入门版",
   description: "针对小白的Linux入门文档",
-  base: "/wiki/"
+  base: "/wiki/",
+  outDir: "../public",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
