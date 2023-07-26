@@ -9,11 +9,13 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '文档首页', link: '/' },
+      { text: 'Linux入门', link: '/wiki/introduction' },
+      { text: 'deepin常用资源整理', link: 'https://deepincol.gitlab.io/deepin-src-col.html' }
     ],
 
     sidebar: [
+      { text: '水文', link:'/home' },
       {
         text: 'Examples',
         items: [
