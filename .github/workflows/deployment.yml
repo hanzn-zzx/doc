@@ -1,35 +1,38 @@
-name: Build and deploy
-
+name: Deploy
 on:
+  workflow_dispatch: {}
   push:
-    branches: [ main ]
-  workflow_dispatch: 
-
+    branches:
+      - main
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  deploy:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
         with:
-          node-version: "16"
-          
-      - run: yarn add -D vitepress
-      - name: build
-        run: yarn docs:build
- 
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - run: npm ci
+      - name: Build
+        run: npm run docs:build
+      - uses: actions/configure-pages@v2
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs/.vitepress/dist
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          # 部署到 gh-pages 分支
-          BRANCH: gh-pages
-          # 部署目录为 VuePress 的默认输出目录，这里需要根据项目的目录进行修改
-          FOLDER: docs/.vitepress/dist
+        id: deployment
+        uses: actions/deploy-pages@v1
+      - name: Upload Release artifact 
+        uses: actions/upload-artifact@v3 
+        with: 
+          name: html files
+          path: docs/.vitepress/dist
