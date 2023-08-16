@@ -1,2 +1,2 @@
-# 入门版Linux wiki
-这是一个针对Linux入门新手而写的文档
+# deepin入门
+这是一个针对小白入门deepin而写的文档

@@ -10,7 +10,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Linux入门', link: '/wiki/introduction' },
+      { text: 'deepin入门', link: '/wiki/introduction' },
       { text: 'deepin常用资源整理', link: 'https://deepincol.gitlab.io/deepin-src-col.html' }
     ],
 
